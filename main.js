@@ -2,7 +2,6 @@
 var fs = require('fs');
 var Logger = require('./lib/logger');
 _ = require('underscore');
-//Log = require('log');
 Ms = require("./mysql");
 MySql = new Ms();
 

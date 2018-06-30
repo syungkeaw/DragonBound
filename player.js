@@ -88,7 +88,7 @@ module.exports = Player = Character.extend({
                 this.connection.send(message.serialize());
             }
         } catch (e) {
-            log.debug(e);
+            Logger.debug(e);
         }
     },
 

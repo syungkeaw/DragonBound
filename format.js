@@ -1,6 +1,7 @@
 
 var _ = require('underscore'),
     Types = require("./gametypes");
+    Logger = require('./lib/logger');
 
 (function () {
     FormatChecker = Class.extend({
@@ -55,7 +56,7 @@ var _ = require('underscore'),
              return message.length > 0 && _.all(message, function(param) { return _.isNumber(param) });
              }*/
             else {
-                log.error("Unknown message type: " + type);
+                Logger.error("Unknown message type: " + type);
                 return false;
             }
         }
