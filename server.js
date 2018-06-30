@@ -41,8 +41,8 @@ function getConfigFile(path, callback) {
         }
     });
 }
-var defaultConfigPath = './config.json',
-    customConfigPath = './config_local.json';
+var defaultConfigPath = './json/config.json',
+    customConfigPath = './json/config_local.json';
 
 process.argv.forEach(function (val, index, array) {
     if (index === 2) {
