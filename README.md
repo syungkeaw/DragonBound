@@ -1,5 +1,6 @@
-DragonBound
-===========
+==================
+DragonBound Clone
+==================
 link proyect :
 http://sharkgun.net  by MR(Developer)
 
@@ -7,7 +8,7 @@ current version in progress :)
 
 #### If you want to help me :)
 
-Install the BD mysql and import the file .sql in back folder using a BD manager (example phpmyadmin, but it uses a port 80 by default, conflicts with the port default by web.js in the project).
+Install the BD mysql and import the file .sql in back folder using a BD manager (example phpmyadmin, but it uses a port 8080 by default, conflicts with the port default by web.js in the project).
 
 Configure the connection with BD in file mysql.js .
 
@@ -19,26 +20,5 @@ Install nodejs:
 http://nodejs.org/
 ```
 ```sh
-$ npm install nodemon -g
-```
-```sh
-$ npm install websocket
-```
-```sh
-$ npm install mysql
-```
-```sh
-$ npm install underscore
-```
-```sh
-$ npm install log
-```
-```sh
-$ npm install sanitizer
-```
-```sh
-$ npm install express
-```
-```sh
-$ npm install logfmt
+$ npm install
 ```
