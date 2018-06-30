@@ -1,10 +1,9 @@
 var express = require("express");
 app = express();
-var logfmt = require("logfmt");
-app.use(logfmt.requestLogger());
+var Logger = require('./lib/logger');
 app.use(express.static(__dirname + '/client'));
-var port = Number(80);
+var port = Number(8080);
 
 app.listen(port, function() {
-    console.log("Listening on " + port);
+    Logger.log("Listening on " + port);
 });

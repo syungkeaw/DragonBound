@@ -1,5 +1,5 @@
-create database clone;
-use clone;
+create database dragonbound;
+use dragonbound;
 
 SET FOREIGN_KEY_CHECKS=0;
 

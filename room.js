@@ -1,11 +1,11 @@
 var cls = require("./lib/class"),
     Messages = require("./message"),
-    Log = require('log'),
+    Logger = require('./lib/logger');
     Utils = require('./utils');
 
 module.exports = Room = cls.Class.extend({
     init: function (name, password, max, mode, server) {
-        log.debug("Room create!");
+        Logger.debug("Room create!");
         this.players = {};
         this.d = [
             [0, 0, 0, 0],

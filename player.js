@@ -6,6 +6,7 @@ var cls = require("./lib/class"),
     Messages = require("./message"),
     Types = require("./gametypes"),
     Room = require("./room");
+    Logger = require('./lib/logger');
 
 module.exports = Player = Character.extend({
     init: function (connection, dserver) {
@@ -22,12 +23,12 @@ module.exports = Player = Character.extend({
 
         this.connection.listen(function (message) {
             var action = parseInt(message[0]);
-            log.debug("Opcode: " + Types.getMessageTypeAsString(action) + " Received: " + message);
+            Logger.debug("Opcode: " + Types.getMessageTypeAsString(action) + " Received: " + message);
 
             if (!check(message)) {
                 //self.connection.close("Invalid "+Types.getMessageTypeAsString(action)+" message format: "+message);
                 //return;
-                log.debug("Invalid " + Types.getMessageTypeAsString(action) + " message format: " + message);
+                Logger.debug("Invalid " + Types.getMessageTypeAsString(action) + " message format: " + message);
             }
             if (!self.hasEnteredGame && action == Types.Messages.CLIENT.login) {
                 self.ver = message[1];
@@ -46,7 +47,7 @@ module.exports = Player = Character.extend({
                 var msg = Utils.sanitize(message[1]);
                 var type = message[2];
                 if (msg && msg !== "") {
-                    log.debug("msg: " + msg);
+                    Logger.debug("msg: " + msg);
                     self.broadcast(new Messages.Chat(self, msg, type), false);
                 }
             } else if (self.hasEnteredGame && action == Types.Messages.CLIENT.change_info) {

@@ -6,7 +6,6 @@ http://sharkgun.net  by MR(Developer)
 current version in progress :)
 
 #### If you want to help me :)
-  [![ScreenShot](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](http://tinyurl.com/DonationX)
 
 Install the BD mysql and import the file .sql in back folder using a BD manager (example phpmyadmin, but it uses a port 80 by default, conflicts with the port default by web.js in the project).
 

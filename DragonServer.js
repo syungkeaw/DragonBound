@@ -1,7 +1,6 @@
-
 var cls = require("./lib/class"),
     _ = require("underscore"),
-    Log = require('log'),
+    Logger = require('./lib/logger'),
     Entity = require('./entity'),
     Character = require('./character'),
     Player = require('./player'),
@@ -36,7 +35,7 @@ module.exports = DragonServer = cls.Class.extend({
         this.onPlayerConnect(function (player) {
         });
         this.onPlayerEnter(function (player) {
-            log.info(player.game_id + " has joined " + self.id);
+            Logger.info(player.game_id + " has joined " + self.id);
             if (!player.hasEnteredGame) {
                 self.incrementPlayerCount();
             }
@@ -44,7 +43,7 @@ module.exports = DragonServer = cls.Class.extend({
                 self.pushToAdjacentGroups(player.group, message, ignoreSelf ? player.id : null);
             });
             player.onExit(function () {
-                log.info(player.game_id + " has left the game.");
+                Logger.info(player.game_id + " has left the game.");
                 self.removePlayer(player);
                 self.decrementPlayerCount();
                 if (self.removed_callback) {
@@ -77,7 +76,7 @@ module.exports = DragonServer = cls.Class.extend({
             }
         }, 1000 / this.ups);
 
-        log.info("" + this.id + " created (capacity: " + this.maxPlayers + " players).");
+        Logger.info("" + this.id + " created (capacity: " + this.maxPlayers + " players).");
     },
 
     nInit: function (callback) {
@@ -100,7 +99,7 @@ module.exports = DragonServer = cls.Class.extend({
         this.players[player.id] = player;
         this.outgoingQueues[player.id] = [];
         this.groups[1].players[player.id] = player;
-        log.info("Added player : " + player.id);
+        Logger.info("Added player : " + player.id);
         this.updateChannelPlayer();
         this.updateRoomsList();
     },
@@ -125,7 +124,7 @@ module.exports = DragonServer = cls.Class.extend({
         if (player && player.id in this.outgoingQueues) {
             this.outgoingQueues[player.id].push(message.serialize());
         } else {
-            log.error("pushToPlayer: player was undefined");
+            Logger.error("pushToPlayer: player was undefined");
         }
     },
     pushToGroup: function (groupId, message, ignoredPlayer) {
@@ -139,7 +138,7 @@ module.exports = DragonServer = cls.Class.extend({
                 }
             });
         } else {
-            log.error("groupId: " + groupId + " is not a valid group");
+            Logger.error("groupId: " + groupId + " is not a valid group");
         }
     },
 

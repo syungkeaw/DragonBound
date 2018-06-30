@@ -4,6 +4,7 @@ var cls = require("./lib/class"),
     _ = require('underscore'),
     wsServer = require('websocket').server;
     Utils = require('./utils'),
+    Logger = require('./lib/logger');
     WS = {};
 module.exports = WS;
 
@@ -70,7 +71,7 @@ var Connection = cls.Class.extend({
     },
 
     close: function(logError) {
-        log.info("Closing connection to "+this._connection.remoteAddress+". Error: "+logError);
+        Logger.info("Closing connection to "+this._connection.remoteAddress+". Error: "+logError);
         this._connection.close();
     }
 });
@@ -84,7 +85,7 @@ WS.SocketServer = Server.extend({
 
         this._httpServer = http.createServer(function(request, response){});
         this._httpServer.listen(port, function() {
-            log.info("Server is listening on port "+port);
+            Logger.info("Server is listening on port "+port);
         });
         var ws = new wsServer({httpServer: this._httpServer});
 
