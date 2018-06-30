@@ -1,7 +1,7 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var path = require('path');
-var Logger = require('./lib/logger');
+var Logger = require('./server/lib/logger');
 var port = Number(8080);
 
 app = express();

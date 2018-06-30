@@ -1,14 +1,14 @@
 
 var fs = require('fs');
-var Logger = require('./lib/logger');
+var Logger = require('./server/lib/logger');
 _ = require('underscore');
-Ms = require("./mysql");
+Ms = require("./server/mysql");
 MySql = new Ms();
 
 function main(config) {
-    var ws = require("./ws"),
-        DragonServer = require("./dragonserver"),
-        Player = require("./player"),
+    var ws = require("./server/ws"),
+        DragonServer = require("./server/dragonserver"),
+        Player = require("./server/player"),
         DServer,
         server = new ws.SocketServer(config.port);
 
