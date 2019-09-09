@@ -24,7 +24,7 @@ function main(config) {
         Logger.error(Array.prototype.join.call(arguments, ", "));
     });
 
-    DServer = new DragonServer('Server1', config.nb_players_per_server, server);
+    DServer = new DragonServer('Server 1', config.nb_players_per_server, server);
     DServer.run();
 
     process.on('uncaughtException', function (e) {

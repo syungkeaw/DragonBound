@@ -3,13 +3,29 @@
    18669,
    139355,
    [
-      "Developer",
+      "High Ranks",
+      "localhost",
+      9001,
+      163,
+      3000,
+      7,
+      23
+   ],[
+      "Mid Ranks",
+      "localhost",
+      9002,
+      163,
+      3000,
+      7,
+      17
+   ],[
+      "Beginners",
       "localhost",
       9002,
       163,
       3000,
       0,
-      23
+      6
    ],[
       null
    ]
