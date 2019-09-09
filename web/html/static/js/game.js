@@ -437,8 +437,7 @@ var AVATAR_TYPE_HEAD = "h",
     AVATAR_INDEX_GOLD_MONTH = 7,
     AVATAR_INDEX_GOLD_PERM = 8,
     AVATAR_INDEX_CASH_WEEK = 9,
-    AVATAR_INDEX_CASH_MONTH =
-        10,
+    AVATAR_INDEX_CASH_MONTH = 10,
     AVATAR_INDEX_CASH_PERM = 11,
     AVATAR_INDEX_STAT_POP = 12,
     AVATAR_INDEX_STAT_TIME = 13,
@@ -10959,7 +10958,7 @@ function ShopSetPage(a, b, c, d) {
         f,
         h = 0;
     for (f = AVATARS.length - 1; 0 <= f; f--)
-        AVATARS[f] && (AVATARS[f][AVATAR_INDEX_SHOP] || g_ss) && AVATARS[f][AVATAR_INDEX_TYPE] == a && (AVATARS[f][AVATAR_INDEX_GENDER] == GENDER_ALL || AVATARS[f][AVATAR_INDEX_GENDER] == c || AVATARS[f][AVATAR_INDEX_TYPE] == AVATAR_TYPE_FLAG || AVATARS[f][AVATAR_INDEX_TYPE] == AVATAR_TYPE_BACKGROUND || AVATARS[f][AVATAR_INDEX_TYPE] == AVATAR_TYPE_FOREGROUND || AVATARS[f][AVATAR_INDEX_TYPE] == AVATAR_TYPE_EXITEM || g_ss) && e.push(f), AVATARS[f] && !AVATARS[f][AVATAR_INDEX_SHOP] &&
+        AVATARS[f] && (AVATARS[f][AVATAR_INDEX_SHOP] == 0 || g_ss) && AVATARS[f][AVATAR_INDEX_TYPE] == a && (AVATARS[f][AVATAR_INDEX_GENDER] == GENDER_ALL || AVATARS[f][AVATAR_INDEX_GENDER] == c || AVATARS[f][AVATAR_INDEX_TYPE] == AVATAR_TYPE_FLAG || AVATARS[f][AVATAR_INDEX_TYPE] == AVATAR_TYPE_BACKGROUND || AVATARS[f][AVATAR_INDEX_TYPE] == AVATAR_TYPE_FOREGROUND || AVATARS[f][AVATAR_INDEX_TYPE] == AVATAR_TYPE_EXITEM || g_ss) && e.push(f), AVATARS[f] && !AVATARS[f][AVATAR_INDEX_SHOP] &&
             h++;
     h != d && (e = []);
     f = Math.floor((e.length + 9 - 1) / 9);
@@ -10986,9 +10985,36 @@ function ShopSetPage(a, b, c, d) {
         d = e[f];
         c = AVATARS[d];
         k = c[AVATAR_INDEX_N];
+        var xxx = k;
         var h = c[AVATAR_INDEX_TYPE],
             m = c[AVATAR_INDEX_GENDER];
+        var xx;
+        if (m === "m")
+            xx = 0;
+        else if (m === "f")
+            xx = 1;
+        else if (m === "a")
+            xx = 2;
+        var x;
+        if (h === "h")
+            x = 0;
+        else if (h === "b")
+            x = 1;
+        else if (h === "g")
+            x = 2;
+        else if (h === "f")
+            x = 3;
+        else if (h === "1")
+            x = 4;
+        else if (h === "2")
+            x = 5;
+        AVATAR_INDEX_GRAPHICS = 20,
         k = c[AVATAR_INDEX_URL] ? c[AVATAR_INDEX_URL] : h == AVATAR_TYPE_BACKGROUND ? STATIC_DIR + "images/ava/b20" + k + ".png" : h == AVATAR_TYPE_FOREGROUND ? STATIC_DIR + "images/ava/f20" + k + ".png" : STATIC_DIR + "images/ava/" + m + h + (k + 1E5).toString().substring(1) + ".png";
+        var file = c[AVATAR_INDEX_GRAPHICS];
+        var name= c[AVATAR_INDEX_NAME];
+        console.log("["+d+","+xxx+","+x+","+xx+',"'+k.substring(19,26)+'","'+name+'",{'+
+        '"min_rank": 0,'+ '"note":'+c[AVATAR_INDEX_NOTE]+','+ '"gold_week":'+c[AVATAR_INDEX_GOLD_WEEK]+','+ '"gold_month":'+c[AVATAR_INDEX_GOLD_MONTH]+','+ '"gold_perm":'+c[AVATAR_INDEX_GOLD_PERM]+','+ '"cash_week":'+c[AVATAR_INDEX_CASH_WEEK]+','+ '"cash_month":'+c[AVATAR_INDEX_CASH_MONTH]+','+ '"cash_perm":'+c[AVATAR_INDEX_CASH_PERM]+','+ '"stat_pop":'+c[AVATAR_INDEX_STAT_POP]+','+ '"stat_time":'+c[AVATAR_INDEX_STAT_TIME]+','+ '"stat_atk":'+c[AVATAR_INDEX_STAT_ATK]+','+ '"stat_def":'+c[AVATAR_INDEX_STAT_DEF]+','+ '"stat_life":'+c[AVATAR_INDEX_STAT_LIFE]+','+ '"stat_item":'+c[AVATAR_INDEX_STAT_ITEM]+','+ '"stat_dig":'+c[AVATAR_INDEX_STAT_DIG]+','+ '"stat_shld":'+c[AVATAR_INDEX_STAT_SHLD]+','+
+        '},'+JSON.stringify(file)+"]");
         $("#shop_item" + f + " .shop_item_icon").removeClass().addClass("shop_item_icon shop_item_icon_" + h + m);
         $("#shop_item" + f + " .shop_item_name").html(c[AVATAR_INDEX_NAME]);
         c[AVATAR_INDEX_GRAPHICS] && c[AVATAR_INDEX_GRAPHICS][0] && (void 0 != c[AVATAR_INDEX_GRAPHICS][1] ? $("#shop_item" + f + " .shop_item_image").css({
